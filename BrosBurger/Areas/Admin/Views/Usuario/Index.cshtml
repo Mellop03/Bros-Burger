@@ -1,0 +1,66 @@
+@model IEnumerable<BrosBurger.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="H1Título w-25">Usuarios</h1>
+
+<p>
+    <a asp-action="Create" class="ButaoBros">Novo</a>
+</p>
+<div class="DivProdutos">
+    @foreach (var item in Model){
+        <div class="col-12 col-md-6 col-lg-3 m-1">
+        <div class="card CardProduto">
+            <div class="card-body text-center CorpoCard">
+            <h5 class="text-white card-title">@Html.DisplayFor(modelItem => item.NomeUsuario)</h5>
+                <div class="modal-footer">
+            <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="ButaoBros">Editar</a>
+            <a asp-action="Details" asp-route-id="@item.UsuarioId" class="ButaoBros">Detalhes</a>
+            <a asp-action="Delete" asp-route-id="@item.UsuarioId" class="ButaoBros">Deletar</a>
+        </div>
+            </div>
+        </div>
+        </div>
+    }
+</div>
+
+
+<table class="table text-white NoPrint">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoginUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SenhaUsuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoginUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SenhaUsuario)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="ButaoBros">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.UsuarioId" class="ButaoBros">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UsuarioId" class="ButaoBros">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

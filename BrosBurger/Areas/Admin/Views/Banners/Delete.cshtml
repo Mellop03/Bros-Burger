@@ -1,0 +1,31 @@
+@model BrosBurger.Models.Banners
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="H1Título">Deletar</h1>
+
+<h3 class="text-light Preto2 w-50">Deseja deletar isso mesmo?</h3>
+<div>
+    <dl class="row text-white BackgroundR w-50">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomeBanner)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeBanner)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagemBanner)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImagemBanner)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BannerId" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-primary">Voltar</a>
+    </form>
+</div>

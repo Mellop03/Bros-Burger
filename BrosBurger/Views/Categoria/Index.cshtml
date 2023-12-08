@@ -1,0 +1,35 @@
+@model IEnumerable<BrosBurger.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Categoria</h1>
+
+<p>
+    <a asp-action="Create">Criar Novo</a>
+</p>
+<table class="table Tabela">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCategoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="W50">
+                @Html.DisplayFor(modelItem => item.NomeCategoria)
+            </td>
+            <td class="W50">
+                <a asp-action="Edit" asp-route-id="@item.CategoriaID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CategoriaID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.CategoriaID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

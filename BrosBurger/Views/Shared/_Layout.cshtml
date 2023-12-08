@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BrosBurger</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BrosBurger.styles.css" asp-append-version="true" />
+</head>
+
+<body id="Bode">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom Preto2 box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/lOgo2.png"
+                        alt="" width="130px" class="d-inline-block align-text-top">
+                </a>
+                <button class="navbar-toggler btn text-light" type="button" data-bs-toggle="collapse"
+                    data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="bi bi-menu-up"></i>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link LinkPersonalizado LoginLink" asp-area="" asp-controller="login"
+                                asp-action="Index"><i class="bi bi-person-add"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link BordaDeslizante LinkPersonalizado SobreLink" asp-area=""
+                                asp-controller="home" asp-action="privacy"><i class="bi bi-person-gear"></i></a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search" method="get">
+                        <input class="form-control me-2" value="@ViewBag.Pesquisa" type="search" placeholder="Search" aria-label="Search" name="Pesquisa">
+                        <button class="ButaoPesquisa" type="submit"><i class="bi bi-search"></i></button>
+                        <select name="Ordenar" id="" class="form-control mx-2">
+                            <option selected="@((string)ViewBag.Ordenar == "Nada")" value="Nada">Ordenar</option>
+                            <option selected="@((string)ViewBag.Ordenar == "Ordem")" value="Ordem">Ordenar por ordem alfabética</option>
+                            <option selected="@((string)ViewBag.Ordenar == "OrdemContrario")" value="OrdemContrario">Ordenar por ordem alfabética (ao contrário)</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

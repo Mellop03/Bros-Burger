@@ -1,0 +1,441 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  color: #333;
+  background-image: url(../img/_d0eedccc-2c55-4f55-9b2b-428fbf7b52d8.jpeg);
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}  
+.butaoNav {
+  color: white;
+}
+.TotalLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+.ProdutosDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 200px;
+  margin-top: 0px;
+}
+.Preto {
+  background-color: #333;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+.Preto2 {
+  background-color: #333;
+  border-radius: 6px;
+}
+.HR {
+  width: 75%;
+  color: white;
+}
+.BackgroundR {
+  background-color: #333;
+  border-radius: 20px;
+  border: 2px solid white;
+  padding: 15px;
+}
+.CardProduto {
+  border-radius: 15px;
+}
+.CardImagem {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.CorpoCard {
+  border-top: white 1px solid;
+  background-color: #333 !important;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-family: fantasy;
+}
+.H1Título {
+  text-align: center;
+  margin: 20px;
+  font-family: fantasy;                                                                            
+  color: white;
+  background-color: #333;
+  border-radius: 6px;
+}
+.H1login {
+  margin: 20px;
+  font-family: fantasy;
+  color: white;
+}
+.ImagemCarrossel {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: 1px solid white;
+}
+.DivCarrossel {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+.DivImagemCarrossel {
+  height: 350px;
+  background-color: black;
+  border-radius: 15px;
+}
+@media (max-width:480px){
+  .DivImagemCarrossel{
+    height: 220px;
+  }
+}
+.DivProdutos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.Logas {
+  width: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #333;
+  border: 1px solid white;
+  border-radius: 15px;
+}
+@media (max-width:575px){
+  .Logas {
+    width: 70%;
+  }
+}
+@media (max-width:400px){
+  .Logas {
+    width: 100%;
+  }
+}
+.W25 {
+  width: 25%;
+}
+.W10 {
+  width: 10%;
+}
+.W50 {
+  width: 50%;
+}
+.W15 {
+  width: 15%;
+}
+.Tabela {
+  width: 100%;
+}
+.LoginLink::after {
+  content: "Fazer login";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 11.5%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.LoginLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.UsuarioLink::after {
+  content: "Usuários";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 11.5%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.UsuarioLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.SobreLink::after {
+  content: "Sobre nós";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 14%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+.SobreLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.CategoriaLink::after {
+  content: "Categorias";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 14%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+.CategoriaLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.ProdutoLink::after {
+  content: "Produtos";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 16.5%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+.ProdutoLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.BannersLink::after {
+  content: "Banners";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 19%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+.BannersLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.SairLink::after {
+  content: "Sair";
+  font-family: sans-serif;
+  font-size: 14px;
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 21.5%;
+  bottom: 65%;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+}
+.SairLink:hover::after{
+  display: block;
+  transition-delay: 200ms;
+  opacity: 1;
+}
+.HR {
+  width: 80%;
+  color: white;
+  background-color: white;
+}
+.Whatsapp {
+  text-decoration: none;
+  color: chartreuse;
+  text-decoration-color: chartreuse;
+}
+.HrDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Centralizar {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.LinkPersonalizado {
+  color: white;
+  font-family: fantasy;
+  font-size: 20px;
+  transition: 200ms;
+}
+.LinkPersonalizado:hover {
+  color: white;
+  transition: 200ms;
+  border-bottom: white solid 3px;
+  border-radius: 3px;
+}
+.ButaoPesquisa {
+  background: none;
+  border: none;
+  color: white;
+}
+.NoPrint {
+  display: none;
+}
+.YesPrint {
+  display: block;
+}
+.Paginacao {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: center;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #333;
+  background-color: white;
+  border-color: #333;
+}
+.page-item.disabled .page-link {
+  color: white;
+  pointer-events: none;
+  background-color: #333;
+  border-color: white;
+}
+.page-link {
+  position: relative;
+  display: block;
+  color: white;
+  text-decoration: none;
+  background-color: #333333;
+  border: 1px solid white;
+}
+.page-link:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #747474;
+}
+.page-item.disable .page-link {
+  color: white;
+  text-decoration: none;
+  background-color: #333333;
+  border: 1px solid white;
+}
+.Butoes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.Butoes2 {
+  display: flex;
+}
+.ButaoBros {
+  text-decoration: none;
+  background-color: #333;
+  color: white;
+  transition: 100ms;
+  border-radius: 6px;
+  border: 1px solid white;
+  padding: 7px;
+}
+.ButaoBros:hover {
+  color: white;
+  transition: 100ms;
+  background-color: #717171;
+}
+@media print {
+  .NoPrint {
+    display: block;
+  }
+  .YesPrint {
+    display: none;
+  }
+}
+@keyframes gradient{
+  0%{
+      background-position: 0% 50%;
+  }
+  50%{
+      background-position: 100% 50%;
+  }
+  100%{
+      background-position: 0% 50%;
+  }
+}
+.Hamburgeria{
+  border-radius: 30px;
+  background-color: black;
+  color: white;
+}
+.Nossa
+{
+  width: 520px;  
+  align-items: center;
+  border-radius: 20px;
+  border-bottom: #333;
+}
+@media (max-width: 530px){
+  .Nossa {
+    width: 400px;
+  }
+}
+@media (max-width: 410px){
+  .Nossa {
+    width: 300px;
+  }
+}
+@media (max-width: 310px){
+  .Nossa {
+    width: 250px;
+  }
+}

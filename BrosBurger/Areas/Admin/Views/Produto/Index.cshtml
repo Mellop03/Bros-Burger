@@ -1,0 +1,177 @@
+@model X.PagedList.PagedList<BrosBurger.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="H1Título w-25">Produtos</h1>
+
+<p class="YesPrint">
+    <a asp-action="Create" class="ButaoBros">Novo</a>
+</p>
+<h1 class="NoPrint H1Título" id="H1Filtro"></h1>
+<div class="Butoes">
+    <form class="BackgroundR d-flex align-items-center col-12 Butoes" asp-action="Index" method="get">
+        <div class="Butoes2">
+            <h2 class="text-white rounded-3 YesPrint">Consulta: </h2>
+            <input type="text" name="txtFiltro" placeholder="Digite aqui o que procura" value="@ViewBag.txtFiltro" class="YesPrint form-control">
+            <button class="ButaoBros YesPrint" type="submit"><i class="bi bi-search"></i></button>
+            <select name="selOrdenacao" class="form-control mx-2 YesPrint">
+            <option value="Nome" selected="@((string)ViewBag.Ordem == "Nome")">Ordenar por nome do produto</option>
+            <option value="Nome_Desc" selected="@((string)ViewBag.Ordem == "Nome_Desc")">Ordenar por nome do produto
+                (decrescente)</option>
+            <option value="Categoria" selected="@((string)ViewBag.Ordem == "Categoria")">Ordenar por categoria do
+                produto</option>
+        </select>
+        </div>
+        <div class="Butoes2">
+            <button class="ButaoBros YesPrint" type="submit" value="relatorio" name="botao">Relatório</button>
+            <button class="ButaoBros ms-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Exportar
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><button class="dropdown-item" type="submit" name="botao" value="XML"> XML</button></li>
+                <li><button class="dropdown-item" type="submit" name="botao" value="Json"> Json</button></li>
+            </ul>
+        </div>
+    </form>
+</div>
+<div class="DivProdutos">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 col-md-6 col-lg-3 m-1 YesPrint">
+            <div class="card CardProduto">
+                @if (item.ImagemProduto.Substring(0, 4) == "http" || item.ImagemProduto.Substring(0, 4) == "data")
+                {
+                    <img class="card-img-top CardImagem" src="@Html.DisplayFor(modelItem => item.ImagemProduto)"
+                        alt="Imagem de capa do card" width="220px" height="230px">
+                }
+                else
+                {
+                    <img class="card-img-top CardImagem" src="~/img/@Html.DisplayFor(modelItem => item.ImagemProduto)"
+                        alt="Imagem de capa do card" width="220px" height="230px">
+                }
+                <div class="card-body text-center CorpoCard">
+                    <h5 class="text-white card-title">@Html.DisplayFor(modelItem => item.NomeProduto)</h5>
+                    <button onclick="Detalhes(item)" class="btn btn-outline-light" data-bs-toggle="modal"
+                        data-bs-target="#_@item.ProdutoId">@item.ValorProduto.ToString("C")</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade DivModal" id="_@item.ProdutoId" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">@Html.DisplayFor(modelItem => item.NomeProduto)
+                        </h1>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top CardImagem" src="@Html.DisplayFor(modelItem => item.ImagemProduto)"
+                            alt="Imagem de capa do card" width="220px" height="230px">
+                        <tr>
+                            <td class="W25">
+                                <p>Nome: @Html.DisplayFor(modelItem => item.NomeProduto)</p>
+                            </td>
+                            <td class="W25">
+                                <p>Descrição: @Html.DisplayFor(modelItem => item.DescricaoProduto)</p>
+                            </td>
+                            <td class="W10">
+                                <p>Valor: @Html.DisplayFor(modelItem => item.ValorProduto)R$</p>
+                            </td>
+                            <td class="W15">
+                                <p>Categoria: @Html.DisplayFor(modelItem => item.Categoria.NomeCategoria)</p>
+                            </td>
+                            <td class="W15">
+                                <p>ID: @Html.DisplayFor(modelItem => item.ProdutoId)</p>
+                            </td>
+                        </tr>
+                    </div>
+                    <td class="">
+                        <a asp-action="Edit" asp-route-id="@item.ProdutoId" class="btn btn-primary mb-3">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.ProdutoId" class="btn btn-success mb-3">Detalhes</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProdutoId" class="btn btn-danger">Deletar</a>
+                    </td>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<table class="table text-white bg-dark Tabela NoPrint">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Valor
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="W25">
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td class="W25">
+                    @Html.DisplayFor(modelItem => item.DescricaoProduto)
+                </td>
+                <td class="W10">
+                    @Html.DisplayFor(modelItem => item.ValorProduto)
+                </td>
+                <td class="W15">
+                    @Html.DisplayFor(modelItem => item.Categoria.NomeCategoria)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="YesPrint d-flex justify-content-center">
+    <ul class="pagination YesPrint Paginacao">
+        @{
+            string primeira = "";
+            string ultima = "";
+        }
+
+        @if (!Model.HasPreviousPage)
+            primeira = "disabled";
+
+        @if (!Model.HasNextPage)
+            ultima = "disabled";
+
+        <li class="page-item @primeira">
+            <a class="page-link" asp-route-pagina="1" asp-route-txtFiltro="@ViewData["txtFiltro"]">&lt;&lt;</a>
+        </li>
+        <li class="page-item @primeira">
+            <a class="page-link" asp-route-pagina="@(Model.PageNumber - 1)"
+                asp-route-txtFiltro="@ViewData["txtFiltro"]">&lt;</a>
+        </li>
+
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                <a class="page-link" asp-route-pagina="@i" asp-route-txtFiltro="@ViewData["txtFiltro"]">@i</a>
+            </li>
+        }
+
+        <li class="page-item @ultima">
+            <a class="page-link" asp-route-pagina="@(Model.PageNumber + 1)"
+                asp-route-txtFiltro="@ViewData["txtFiltro"]">></a>
+        </li>
+        <li class="page-item @ultima">
+            <a class="page-link" asp-route-pagina="@Model.PageCount" asp-route-txtFiltro="@ViewData["txtFiltro"]">>></a>
+        </li>
+
+    </ul>
+</div>

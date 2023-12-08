@@ -1,0 +1,32 @@
+@model BrosBurger.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="TotalLogin">
+    <div class="Logas">
+        <h1 class="H1login">Login</h1>
+        <hr>
+        <div class="DivEscruvinhar">
+            <form asp-action="Index">
+                <div asp-validation-summary="ModelOnly" class="text-danger col-12 col-lg-6"></div>
+                <div class="form-group">
+                    <label asp-for="LoginUsuario" class="control-label"></label>
+                    <input asp-for="LoginUsuario" class="form-control" />
+                    <span asp-validation-for="LoginUsuario" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SenhaUsuario" class="control-label"></label>
+                    <input type="password" asp-for="SenhaUsuario" class="form-control" />
+                    <span asp-validation-for="SenhaUsuario" class="text-danger"></span>
+                </div>
+                @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                {
+                    <p class="text-danger">@ViewBag.ErrorMessage</p>
+                }
+                <div class="form-group text-center mt-3">
+                    <input type="submit" value="Entrar" class="ButaoBros"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

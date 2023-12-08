@@ -1,0 +1,35 @@
+@model BrosBurger.Models.Banners
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="H1Título">Criar</h1>
+
+<h4 class="text-light Preto2 w-25">Banners</h4>
+<hr />
+<div class="row text-light BackgroundR">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                Nome do Banner
+                <input asp-for="NomeBanner" class="form-control" />
+                <span asp-validation-for="NomeBanner" class="text-white"></span>
+            </div>
+            <div class="form-group">
+                Imagem
+                <input asp-for="ImagemBanner" class="form-control" />
+                <span asp-validation-for="ImagemBanner" class="text-white"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-danger mt-3">Voltar</a>
+</div>
+

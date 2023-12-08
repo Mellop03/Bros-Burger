@@ -1,0 +1,68 @@
+@model IEnumerable<BrosBurger.Models.Banners>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="H1Título w-25">Banners</h1>
+
+<p>
+    <a asp-action="Create" class="ButaoBros">Novo</a>
+</p>
+
+<div class="ProdutosDiv">
+  @foreach (var item in Model)
+  {
+    <div class="col-12 col-md-6 col-lg-3 m-1">
+      <div class="card CardProduto">
+        @if (item.ImagemBanner.Substring(0, 4) == "http" || item.ImagemBanner.Substring(0, 4) == "data")
+        {
+          <img class="card-img-top CardImagem" src="@Html.DisplayFor(modelItem => item.ImagemBanner)"
+            alt="Imagem de capa do card" width="220px" height="230px">
+        }
+        else
+        {
+          <img class="card-img-top CardImagem" src="~/img/@Html.DisplayFor(modelItem => item.ImagemBanner)"
+            alt="Imagem de capa do card" width="220px" height="230px">
+        }
+        <div class="card-body text-center CorpoCard">
+            <h5 class="text-white card-title">@Html.DisplayFor(modelItem => item.NomeBanner)</h5>
+            <a asp-action="Edit" asp-route-id="@item.BannerId" class="ButaoBros">Editar</a> |
+            <a asp-action="Details" asp-route-id="@item.BannerId" class="ButaoBros">Detalhes</a> |
+            <a asp-action="Delete" asp-route-id="@item.BannerId" class="ButaoBros">Deletar</a>
+        </div>
+      </div>
+    </div>
+  }
+
+
+<table class="table text-white NoPrint">
+    <thead >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeBanner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemBanner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeBanner)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.ImagemBanner)" alt="" width="100px">
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BannerId" class="btn btn-primary">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.BannerId" class="btn btn-success">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.BannerId" class="btn btn-danger">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

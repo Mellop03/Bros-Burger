@@ -1,0 +1,120 @@
+@model BrosBurger.Models.ProdutoBannerViewModel;
+@{
+  ViewData["Title"] = "Home Page";
+}
+<h1 class="text-center H1Título">Seja bem vindo!</h1>
+<div class="DivCarrossel mb-4">
+  <div id="carouselExampleAutoplaying" class="carousel slide w-75" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      @{
+        var counter = 0;
+      }
+      @foreach (var item in Model.ListaBanners)
+      {
+        if (counter == 0){
+          if (item.ImagemBanner.Substring(0, 4) == "Http"){
+            <div data-bs-interval="3000ms" class="carousel-item active DivImagemCarrossel">
+              <img src="@item.ImagemBanner" class="d-block w-100 ImagemCarrossel">
+            </div>
+          } else {
+            <div data-bs-interval="3000ms" class="carousel-item active DivImagemCarrossel">
+              <img src="~/img/@item.ImagemBanner" class="d-block w-100 ImagemCarrossel">
+            </div>
+          }
+        } else {
+          if (item.ImagemBanner.Substring(0, 4) == "Http"){
+            <div data-bs-interval="3000ms" class="carousel-item DivImagemCarrossel">
+              <img src="@item.ImagemBanner" class="d-block w-100 ImagemCarrossel">
+            </div>
+          } else {
+            <div data-bs-interval="3000ms" class="carousel-item DivImagemCarrossel">
+              <img src="~/img/@item.ImagemBanner" class="d-block w-100 ImagemCarrossel">
+            </div>
+          }
+        }
+        counter++;
+      }
+    </div>
+  </div>
+</div>
+<hr class="bg-white">
+<div class="ProdutosDiv">
+  @foreach (var item in Model.ListaProdutos)
+  {
+    <div class="col-12 col-md-6 col-lg-3 m-1">
+      <div class="card CardProduto">
+        @if (item.ImagemProduto.Substring(0, 4) == "http" || item.ImagemProduto.Substring(0, 4) == "data")
+        {
+          <img class="card-img-top CardImagem" src="@Html.DisplayFor(modelItem => item.ImagemProduto)"
+            alt="Imagem de capa do card" width="220px" height="230px">
+        }
+        else
+        {
+          <img class="card-img-top CardImagem" src="~/img/@Html.DisplayFor(modelItem => item.ImagemProduto)"
+            alt="Imagem de capa do card" width="220px" height="230px">
+        }
+        <div class="card-body text-center CorpoCard">
+          <h5 class="text-white card-title">@Html.DisplayFor(modelItem => item.NomeProduto)</h5>
+          <button onclick="Detalhes(item)" class="btn btn-outline-light" data-bs-toggle="modal"
+            data-bs-target="#_@item.ProdutoId">@item.ValorProduto.ToString("C")</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade DivModal" id="_@item.ProdutoId" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">@Html.DisplayFor(modelItem => item.NomeProduto)</h1>
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img class="card-img-top CardImagem" src="@Html.DisplayFor(modelItem => item.ImagemProduto)"
+              alt="Imagem de capa do card" width="220px" height="230px">
+            <p>@Html.DisplayFor(modelItem => item.DescricaoProduto)</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">R$@Html.DisplayFor(modelItem =>
+            item.ValorProduto)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+<div class="d-flex justify-content-center NoPrint">
+  <ul class="pagination">
+    @{
+      string primeira = "";
+      string ultima = "";
+    }
+
+    @if (!Model.ListaProdutos.HasPreviousPage)
+      primeira = "disabled";
+
+    @if (!Model.ListaProdutos.HasNextPage)
+      ultima = "disabled";
+
+    <li class="page-item @primeira">
+      <a class="page-link" asp-route-pagina="1">&lt;&lt;</a>
+    </li>
+    <li class="page-item @primeira">
+      <a class="page-link" asp-route-pagina="@(Model.ListaProdutos.PageNumber - 1)">&lt;</a>
+    </li>
+
+    @for (int i = 1; i <= Model.ListaProdutos.PageCount; i++)
+    {
+      <li class="page-item @(i == Model.ListaProdutos.PageNumber ? "active" : "")">
+        <a class="page-link" asp-route-pagina="@i">@i</a>
+      </li>
+    }
+
+    <li class="page-item @ultima">
+      <a class="page-link" asp-route-pagina="@(Model.ListaProdutos.PageNumber + 1)">></a>
+    </li>
+    <li class="page-item @ultima">
+      <a class="page-link" asp-route-pagina="@Model.ListaProdutos.PageCount">>></a>
+    </li>
+
+  </ul>
+</div>

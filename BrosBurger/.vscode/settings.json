@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin\\Release\\net7.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/385cb6e3-a3a3-4da9-9f49-dba6977093f8/resourceGroups/BrosBurger_group/providers/Microsoft.Web/sites/BrosBurger"
+}
